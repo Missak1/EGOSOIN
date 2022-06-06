@@ -1,0 +1,104 @@
+body {
+    color:black;
+    background-color:white;
+    background-image:url(image.jpeg);
+    background-size: cover;
+
+    }
+nav ul{
+    padding: 0px;
+    margin: 0px;
+    list-style-type: none;
+    color:black;
+    
+
+}
+nav ul li{
+    display: inline-block;
+    margin: 0px;
+    padding:0px;
+    width: 300px;
+    height: 40px;
+    text-align: center;
+    line-height: 40px;
+  
+}
+nav li a{
+    display: block;
+    text-decoration: none;
+    color:black;
+    font-size: 25px;
+    font-weight: bold;
+}
+nav ul li:hover{
+    background-color:white;
+}
+
+h1{
+    color: black;
+    text-align: center;
+    font-size: 90px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+.button{
+    font-family:  'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    background-color: black;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    display: inline-block;
+    font-size: 20px;
+    margin: 4px ;
+    transition: 0.3s;   
+}
+h4{
+    color: black;
+    text-align: center;
+    margin-top: 90px;
+    font-size: 50px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+
+#container{
+    width:400px;
+    margin:0 auto;
+    margin-top:10%;
+}
+
+form {
+    width:100%;
+    padding: 30px;
+    border: 1px  #f1f1f1;
+    background: transparent;
+    
+}
+#container h1{
+    width: 38%;
+    margin: 0 auto;
+    padding-bottom: 10px;
+}
+
+input[type=text], input[type=password] {
+    width: 98%;
+    padding: 12px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+input[type=submit] {
+    
+    color: black;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 98%;
+}
+input[type=submit]:hover {
+    background-color: black;
+    color: white;
+    border: 1px solid black;
+}
