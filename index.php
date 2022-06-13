@@ -18,7 +18,7 @@
 	}
 	?>
 </p>
-<h1>BIENVENUE CHEZ EGOSOIN</h1>
+<h1 >BIENVENUE CHEZ EGOSOIN</h1>
     <Div Align=Center><a class="button" href="connexionPatient.php"><strong>Pour prendre un rendez-vous</strong></a> </Div>
 <?php $content = ob_get_clean(); ?>
 

@@ -61,8 +61,9 @@
 <?php $title = "Connexion"; ?>
 
 <?php ob_start(); ?>
+<div id="container">
 <form action="connexionPatient.php" method="POST">
-	<h1>Espace Patient</h1>
+	<h2>Espace Patient</h2>
 
 	<label><b>Identifiant</b></label>
 	<input type="text" placeholder="Entrer votre identifiant" name="pseudo" required>
@@ -73,6 +74,7 @@
 	<br /><br />
 	<input type="submit" id='submit' value='LOGIN'>
 </form>
+</div>
 <?php $content = ob_get_clean(); ?>
 
 <?php require('template.php'); ?>

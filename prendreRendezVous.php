@@ -55,11 +55,11 @@ if (isset($_POST) && !empty($_POST)) {
                 )
             );
 
-            echo "Le rendez-vous a été pris !";
-        }
-        else{
-            echo "Attention : ce médecin a déjà un rendez-vous à cette date...";
-        }
+				echo "Le rendez-vous a été pris !";
+			}
+			else{
+				echo "Attention : ce médecin a déjà un rendez-vous à cette date...";
+			}
 
        
     }
@@ -75,52 +75,54 @@ if (isset($_POST) && !empty($_POST)) {
 <?php $title = "Prendre un rendez-vous"; ?>
 
 <?php ob_start(); ?>
-<form method="POST">
-		<h1>Prendre un rendez-vous</h1>
-			<div>
-				<select name="medecin" id="medecin" onChange="window.location.href='prendreRendezVous.php?medecin=' + this.value">
-					<option value="">--Choisissez un médecin--</option>
-					<?php
-					foreach ($medecins as $key => $medecin) {
-						?>
-					<option value="<?php echo $medecin['M_code']; ?>" <?php echo $selectedMedecin == $medecin['M_code'] ? 'selected' : '' ?>>
-						<?php echo $medecin['M_nom'] . ' ' . $medecin['M_prenom'] . ' (' . $medecin['M_specialite'] . ')'; ?>
-					</option>
-					<?php
-					}
-				?>
-				</select>
-			</div>
+		<div id="container">
+			<form method="POST">
+					<h2>Prendre un rendez-vous</h2>
+						<div>
+							<select name="medecin" id="medecin" onChange="window.location.href='prendreRendezVous.php?medecin=' + this.value">
+								<option value="">--Choisissez un médecin--</option>
+								<?php
+								foreach ($medecins as $key => $medecin) {
+									?>
+								<option value="<?php echo $medecin['M_code']; ?>" <?php echo $selectedMedecin == $medecin['M_code'] ? 'selected' : '' ?>>
+									<?php echo $medecin['M_nom'] . ' ' . $medecin['M_prenom'] . ' (' . $medecin['M_specialite'] . ')'; ?>
+								</option>
+								<?php
+								}
+							?>
+							</select>
+						</div>
 
-			<?php 
-				if(!empty($selectedMedecin)){
-					?>
-			<div>
-				<p>Veuillez ne pas choisir ces dates SVP :</p>
-				<ul>
-					<?php
-					foreach ($consultationsExistantes as $key => $consultation) {
+						<?php 
+							if(!empty($selectedMedecin)){
+								?>
+						<div>
+							<p>Veuillez ne pas choisir ces dates SVP :</p>
+							<ul>
+								<?php
+								foreach ($consultationsExistantes as $key => $consultation) {
+									?>
+								<li><?php echo $consultation['C_date']; ?></li>
+								<?php
+								}
+							?>
+							</ul>
+						</div>
+						<div>
+							<label>
+								Date du rendez-vous :
+								<input type="date" name="dateRendezVous" />
+							</label>
+						</div>
+						<?php
+							}
 						?>
-					<li><?php echo $consultation['C_date']; ?></li>
-					<?php
-					}
-				?>
-				</ul>
-			</div>
-			<div>
-				<label>
-					Date du rendez-vous :
-					<input type="date" name="dateRendezVous" />
-				</label>
-			</div>
-			<?php
-				}
-			?>
 
-			<br />
-			<button type="submit" name="submit">Valider le rendez-vous</button>
-			<div><a class="button" href="pagedeconnexionPatient.php"><strong>Retour</strong></a></div>
-	</form>
+						<br />
+						<button type="submit" name="submit">Valider le rendez-vous</button>
+						<!-- <div><a class="button" href="pagedeconnexionPatient.php"><strong>Retour</strong></a></div> -->
+			</form>
+		</div>
 <?php $content = ob_get_clean(); ?>
 
 <?php require('template.php'); ?>

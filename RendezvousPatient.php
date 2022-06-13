@@ -12,88 +12,36 @@ catch(Exception $e)
         die('Erreur : '.$e->getMessage());
 }
 
-$selectedMedecin = $_GET['medecin'] ?? null;
-
-$sqlQuery = 'SELECT * FROM medecin';
-$medecinsStatement = $db->prepare($sqlQuery);
-$medecinsStatement->execute();
-$medecins = $medecinsStatement->fetchAll();
-
-
-$sqlQuery = 'SELECT * FROM consultation
-	LEFT JOIN medecin ON medecin.M_code = consultation.code_m
-	LEFT JOIN patient ON patient.P_id = consultation.id_p
-';
-if(!empty($selectedMedecin)){
-	$sqlQuery .= ' WHERE code_m = :code_m';
-}
-
-$consultationsStatement = $db->prepare($sqlQuery);
-$consultationsStatement->execute(
-    array(
-        'code_m' => $selectedMedecin
-    )
-);
-$consultationsExistantes = $consultationsStatement->fetchAll();
-
+$sqlQuery = 'SELECT * FROM consultation WHERE id =';
+$rdvStatement = $db->prepare($sqlQuery);
+$rdvStatement->execute();
+$rdv = $rdvStatement->fetchAll();
 ?>
 
 <?php $title = "Liste des rendez-vous"; ?>
 
 <?php ob_start(); ?>
+<div id="container">
 <form action="listeRendezVous.php" method="POST">
-	<h1>Liste des rendez-vous</h1>
+	<h2>Mes rendez-vous</h2>
 	<br /><br />
 	<div>
-		<form method="GET">
-			<select name="medecin" id="medecin" onChange="this.parentNode.submit()">
-				<option value="">--Choisissez un médecin--</option>
-				<?php
-                foreach ($medecins as $key => $medecin) {
-                    ?>
-				<option value="<?php echo $medecin['M_code']; ?>" <?php echo $selectedMedecin == $medecin['M_code'] ? 'selected' : '' ?>>
-					<?php echo $medecin['M_nom'] . ' ' . $medecin['M_prenom'] . ' (' . $medecin['M_specialite'] . ')'; ?>
-				</option>
-				<?php
-                }
-            ?>
-			</select>
-		</form>
-	</div>
-
-
-	<div>
-		<p>Liste des rendez-vous :</p>
-		<table>
-			<thead>
-				<tr>
-					<th>Date</th>
-					<th>Médecin</th>
-					<th>Patient</th>
-				</tr>
-
-			</thead>
-			<tbody>
-				<?php
-                foreach ($consultationsExistantes as $key => $consultation) {
-                    ?>
-
-				<tr>
-					<td><?php echo $consultation['C_date']; ?></td>
-					<td><?php echo $consultation['M_nom'] . ' ' . $consultation['M_prenom']; ?></td>
-					<td><?php echo $consultation['nom'] . ' ' . $consultation['prenom']; ?></td>
-				</tr>
-
-				<?php
-                }
-            ?>
-			</tbody>
-		</table>
-	</div>
-
+				<p>Liste des rendez-vous :</p>
+				<table>
+					<thead>
+						<tr>
+							<th>Date</th>
+							<th>Médecin</th>
+						</tr>
+					</thead>
+					<tbody>
+					</tbody>
+				</table>
+			</div>
 
 	<br />
 	<div><a class="button" href="pagedeconnexionSecretaire.php"><strong>Retour</strong></a></div>
+			</div>
 </form>
 <?php $content = ob_get_clean(); ?>
 

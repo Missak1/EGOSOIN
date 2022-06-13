@@ -22,8 +22,10 @@ if(isset($_SESSION['utilisateur_id'])){
 <?php $title = "Mon profil"; ?>
 
 <?php ob_start(); ?>
+<h1>Voici le profil de <?php echo $recipes['pseudo']; ?></h1>
+<div id="container">
 <form action="profilPatient.php" method="POST">
-	<h1>Voici le profil de <?php echo $recipes['pseudo']; ?></h1>
+	
 
 	<div>Quelques informations sur vous : </div>
 	<ul>
@@ -41,6 +43,7 @@ if(isset($_SESSION['utilisateur_id'])){
 		<br />
 		<li>Votre poids : <?php echo $recipes['poids']; ?> kg</li>
 		<br />
+		
 		<div><a class="button" href="modifierProfilPatient.php"><strong>Modifier son profil</strong></a> </div>
 		<div><a class="button" href="pagedeconnexionPatient.php"><strong>Retour</strong></a> </div>
 	</ul>
@@ -52,6 +55,7 @@ else{
 }
 ?>
 </form>
+</div>
 <?php $content = ob_get_clean(); ?>
 
 <?php require('template.php'); ?>

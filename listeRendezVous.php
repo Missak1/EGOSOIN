@@ -41,65 +41,60 @@ $consultationsExistantes = $consultationsStatement->fetchAll();
 <?php $title = "Liste des rendez-vous"; ?>
 
 <?php ob_start(); ?>
-<form action="listeRendezVous.php" method="POST">
-	<h1>Liste des rendez-vous</h1>
-	<br /><br />
-	<div>
-		<form method="GET">
-			<select name="medecin" id="medecin" onChange="this.parentNode.submit()">
+<div id="container">
+	<form action="listeRendezVous.php" method="POST">
+		<h2>Liste des rendez-vous</h2>
+		<br /><br />
+		<div>
+			<select name="medecin" id="medecin" onChange="window.location.href='listeRendezVous.php?medecin=' + this.value">
 				<option value="">--Choisissez un médecin--</option>
 				<?php
-                foreach ($medecins as $key => $medecin) {
-                    ?>
+					foreach ($medecins as $key => $medecin) {
+						?>
 				<option value="<?php echo $medecin['M_code']; ?>" <?php echo $selectedMedecin == $medecin['M_code'] ? 'selected' : '' ?>>
 					<?php echo $medecin['M_nom'] . ' ' . $medecin['M_prenom'] . ' (' . $medecin['M_specialite'] . ')'; ?>
 				</option>
 				<?php
-                }
-            ?>
+					}
+				?>
 			</select>
-		</form>
-	</div>
+		</div>
 
 
-	<div>
-		<p>Liste des rendez-vous :</p>
-		<table>
-			<thead>
-				<tr>
-					<th>Date</th>
-					<th>Médecin</th>
-					<th>Patient</th>
-				</tr>
+		<div>
+			<p>Liste des rendez-vous :</p>
+			<table>
+				<thead>
+					<tr>
+						<th>Date</th>
+						<th>Médecin</th>
+						<th>Patient</th>
+					</tr>
 
-			</thead>
-			<tbody>
-				<?php
-                foreach ($consultationsExistantes as $key => $consultation) {
-                    ?>
+				</thead>
+				<tbody>
+					<?php
+						foreach ($consultationsExistantes as $key => $consultation) {
+							?>
 
-				<tr>
-					<td><?php echo $consultation['C_date']; ?></td>
-					<td><?php echo $consultation['M_nom'] . ' ' . $consultation['M_prenom']; ?></td>
-					<td><?php echo $consultation['nom'] . ' ' . $consultation['prenom']; ?></td>
-				</tr>
+					<tr>
+						<td><?php echo $consultation['C_date']; ?></td>
+						<td><?php echo $consultation['M_nom'] . ' ' . $consultation['M_prenom']; ?></td>
+						<td><?php echo $consultation['nom'] . ' ' . $consultation['prenom']; ?></td>
+					</tr>
 
-				<?php
-                }
-            ?>
-			</tbody>
-		</table>
-	</div>
+					<?php
+						}
+					?>
+				</tbody>
+			</table>
+		</div>
 
 
-	<br />
-	<div><a class="button" href="pagedeconnexionSecretaire.php"><strong>Retour</strong></a></div>
-</form>
+		<br />
+		<div><a class="button" href="pagedeconnexionSecretaire.php"><strong>Retour</strong></a></div>
+	</form>
+</div>
 <?php $content = ob_get_clean(); ?>
 
 <?php require('template.php'); ?>
-
-	
-</body>
-
-</html>

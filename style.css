@@ -61,7 +61,7 @@ h4{
 
 
 #container{
-    width:400px;
+    width:500px;
     margin:0 auto;
     margin-top:10%;
 }
@@ -69,19 +69,16 @@ h4{
 form {
     width:100%;
     padding: 30px;
-    border: 1px  #f1f1f1;
-    background: transparent;
+    border: 1px solid #f1f1f1;
+    background: #fff;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
     
 }
-#container h1{
-    width: 38%;
-    margin: 0 auto;
-    padding-bottom: 10px;
-}
+
 
 input[type=text], input[type=password] {
-    width: 98%;
-    padding: 12px;
+    width: 100%;
+    padding: 12px 20px;
     margin: 8px 0;
     display: inline-block;
     border: 1px solid #ccc;
@@ -102,3 +99,21 @@ input[type=submit]:hover {
     color: white;
     border: 1px solid black;
 }
+
+button[type=submit] {
+    
+    color: black;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 98%;
+}
+button[type=submit]:hover {
+    background-color: black;
+    color: white;
+    border: 1px solid black;
+}
+
+
+

@@ -58,14 +58,16 @@
 <?php $title = "Inscription"; ?>
 
 <?php ob_start(); ?>
-<h3>Inscription Espace Patient</h3>
+<div id="container">
 <form method="post" action="inscriptionPatient.php">
+	<h2>Inscription Espace Patient</h2>
+
 	Pseudo: <input type="text" name="pseudo">
 	<br />
 	Nom: <input type="text" name="nom">
 	<br />
 	Prenom: <input type="text" name="prenom">
-	<br />
+	<br /><br />
 	Votre date de naissance: <input type="date" name="dateNaiss">
 	<br /><br />
 	Votre email: <input type="text" name="email">
@@ -82,6 +84,7 @@
 	<br /><br />
 	<input type="submit" value="S'inscrire">
 </form>
+</div>
 <?php $content = ob_get_clean(); ?>
 
 <?php require('template.php'); ?>

@@ -61,18 +61,21 @@
 <?php $title = "Connexion"; ?>
 
 <?php ob_start(); ?>
-<form action="connexionSecretaire.php" method="POST">
-	<h1>Espace secretaire</h1>
+	
+		<div id="container">
+			<form action="connexionSecretaire.php" method="POST">
+				<h2>Espace Secrétaire</h2>
 
-	<label><b>Identifiant</b></label>
-	<input type="text" placeholder="Entrer votre identifiant" name="pseudo" required>
-	<br /><br />
+				<label><b>Identifiant</b></label>
+				<input type="text" placeholder="Entrer votre identifiant" name="pseudo" required>
+				<br /><br />
 
-	<label><b>Mot de passe</b></label>
-	<input type="password" placeholder="Entrer le mot de passe" name="password" required>
-	<br /><br />
-	<input type="submit" id='submit' value='LOGIN'>
-</form>
+				<label><b>Mot de passe</b></label>
+				<input type="password" placeholder="Entrer le mot de passe" name="password" required>
+				<br /><br />
+				<input type="submit" id='submit' value='LOGIN'>
+			</form>
+		</div>
 <?php $content = ob_get_clean(); ?>
 
 <?php require('template.php'); ?>
